@@ -3,7 +3,7 @@ var app = angular.module('contentEdit', []);
 app.directive('editor', ['$document', function($document) { return {
   restrict: 'AE',
   require: '?ngModel',
-  templateUrl: 'scripts/tpl/editor.html',
+  templateUrl: 'scripts/lib/Directive-Contentedit-tpl.html',
   scope:{
     editContent:'=content',
     editAble:'=editable'

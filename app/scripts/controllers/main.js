@@ -15,5 +15,5 @@ angular.module('yoAngularApp')
       'Karma'
     ];
     $scope.editContent = '<h1>Title</h1>';
-    $scope.isEdit = 'true';
+    $scope.isEdit = true;
   });
