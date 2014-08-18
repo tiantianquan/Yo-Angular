@@ -21,8 +21,20 @@ app.directive('editor', ['$document', function($document) { return {
         p:function(){
           $document[0].execCommand('formatblock',false,'p');
         }
-      } 
-    }    
+      }
+    }
+
+    element.on('mousedown',function(){
+      $document.on('mouseup',function(){
+        if($document[0].getSelection().type === 'Range'){
+          var range = $document[0].getSelection().getRangeAt(0);
+          console.log(range);
+
+        }
+        $document.off('mouseup');
+      })
+    });
+
   }
 }}]);
 
