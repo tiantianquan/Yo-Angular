@@ -1,6 +1,6 @@
 var app = angular.module('contentEdit', []);
 
-app.directive('editor', ['$document', function($document) { return {
+app.directive('editor', ['$document','$window', function($document,$window) { return {
   restrict: 'AE',
   require: '?ngModel',
   templateUrl: 'scripts/lib/Directive-Contentedit-tpl.html',
@@ -21,10 +21,55 @@ app.directive('editor', ['$document', function($document) { return {
         p:function(){
           $document[0].execCommand('formatblock',false,'p');
         }
-      } 
+      }
     }    
+
+    scope.style = {
+      'position': 'absolute',
+      'left':0,
+      'top':0,
+      'visibility':'hidden',
+      'background-color':'#000',
+      'color':'#fff',
+      'cursor':'pointer',
+      'border-radius': 7,
+      'padding':'5px 10px'
+    }
+
+    scope.innerStyle = {
+      'padding':'5px 10px'
+    }
+
+    scope.activeStyle = {
+      'padding':'5px 10px',
+      'color':'green'
+    }
+
+    element.on('mousedown',function (event){
+      $document.on('mouseup',function(){
+        scope.$apply(function(){
+          var sel = $window.getSelection();
+          if (sel.type === 'Range'){
+            var rangeBox = sel.getRangeAt(0).getBoundingClientRect();
+            scope.style.left = rangeBox.left+ rangeBox.width/2;
+            scope.style.top = rangeBox.top-30;
+            scope.style.visibility = 'visible';
+          }
+          $document.off('mouseup');
+        })
+      })
+    });
+
+    $document.on('mousedown',function(){
+      scope.$apply(function(){
+        scope.style.visibility = 'hidden';
+      })
+    })
   }
 }}]);
+
+
+
 
 app.directive('isedit',['$timeout',function($timeout){return{
   restrict:'AE',
@@ -126,3 +171,5 @@ app.directive('isedit',['$timeout',function($timeout){return{
 */
   }
 }}]);
+
+

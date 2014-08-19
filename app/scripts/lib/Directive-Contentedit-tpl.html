@@ -1,18 +1,7 @@
-<div isedit contenteditable="{{editAble}}" ng-model="editContent">
+<div isedit contenteditable="{{editAble}}" ng-model="editContent" >
 </div>
-<div class="pen-menu pen-menu">
-  <i class="pen-icon icon-blockquote" data-action="blockquote"> </i>
-  <i class="pen-icon icon-h2" data-action="h2" ng-mousedown="pen.actions.h2()"> H2 </i>
-  <i class="pen-icon icon-h3 active" data-action="h3" ng-mousedown="pen.actions.h3()"> H3 </i>
-  <i class="pen-icon icon-p" data-action="p" ng-mousedown="pen.actions.p()"> P </i>
-  <i class="pen-icon icon-insertorderedlist" data-action="insertorderedlist"> </i>
-  <i class="pen-icon icon-insertunorderedlist" data-action="insertunorderedlist"> </i>
-  <i class="pen-icon icon-inserthorizontalrule" data-action="inserthorizontalrule"> </i>
-  <i class="pen-icon icon-indent" data-action="indent"> </i>
-  <i class="pen-icon icon-outdent" data-action="outdent"> </i>
-  <i class="pen-icon icon-bold" data-action="bold"> </i>
-  <i class="pen-icon icon-italic" data-action="italic"> </i>
-  <i class="pen-icon icon-underline" data-action="underline"> </i>
-  <i class="pen-icon icon-createlink" data-action="createlink"> </i>
-  <input class="pen-input" placeholder="http://" style="display: none;">
+<div class="pen-menu pen-menu" ng-style="style">
+  <span ng-mousedown="pen.actions.h2()" ng-style="innerStyle"> H2 </span>
+  <span ng-mousedown="pen.actions.h3()" ng-style="innerStyle"> H3 </span>
+  <span ng-mousedown="pen.actions.p()" ng-style="innerStyle"> P </span>
 </div>
