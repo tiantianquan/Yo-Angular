@@ -8,7 +8,7 @@
  * Controller of the yoAngularApp
  */
 angular.module('yoAngularApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, FileUploader) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -16,4 +16,9 @@ angular.module('yoAngularApp')
     ];
     $scope.editContent = '<h1>Title</h1>';
     $scope.isEdit = true;
+    $scope.uploader = new FileUploader(
+        {
+            autoUpload:true
+        });
+
   });

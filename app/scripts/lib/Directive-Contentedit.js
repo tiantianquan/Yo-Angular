@@ -46,13 +46,14 @@ app.directive('editor', ['$document','$window', function($document,$window) { re
     }
 
     element.on('mousedown',function (event){
-      $document.on('mouseup',function(){
+      $document.on('mouseup',function(e){
         scope.$apply(function(){
           var sel = $window.getSelection();
           if (sel.type === 'Range'){
             var rangeBox = sel.getRangeAt(0).getBoundingClientRect();
-            scope.style.left = rangeBox.left+ rangeBox.width/2;
-            scope.style.top = rangeBox.top-30;
+            // scope.style.left = rangeBox.left+ rangeBox.width/2;
+            scope.style.left = e.pageX - $('.pen-menu').width()/2;
+            scope.style.top = rangeBox.top - 30;
             scope.style.visibility = 'visible';
           }
           $document.off('mouseup');

@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'contentEdit'
+    'contentEdit',
+    'angularFileUpload'
   ])
   .config(function ($routeProvider) {
     $routeProvider
